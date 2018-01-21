@@ -1,0 +1,31 @@
+<form>
+  <div *ngIf="product">
+    <h2 *ngIf="product.id; else elseTitle">{{ product.name | uppercase }} Details</h2>
+    <ng-template #elseTitle><h2>New Product</h2></ng-template>
+    <div *ngIf="product.id"><label>Id: </label><span>{{product.id}}</span></div>
+    <div>
+      <label>Name:</label><input [(ngModel)]="product.name" name="name" placeholder="name" required>
+      <br/>
+      <label>Price:
+
+      </label><input [(ngModel)]="product.price" name="price" placeholder="price">
+      <br />
+      <label>Description:
+
+      </label><input [(ngModel)]="product.description" name="description" placeholder="description" size="40">
+      <br />
+      <label>Available:
+
+      </label><input [(ngModel)]="product.available" name="available" placeholder="available">
+      <br/>
+      <label>Creation date:
+        <span *ngIf="product.id; else elseDate">{{product.creationDate | date:'dd-MM-yyyy'}}</span>
+        <ng-template #elseDate><span>{{today | date:'dd-MM-yyyy'}}</span></ng-template>
+      </label>
+    </div>
+    <button type="button" class="btn btn-primary" (click)="goBack()">Go back</button>
+    <button type="button" class = "btn btn-success" (click)="save()" [hidden]="canWrite == false">Save</button>
+    <button style="float:right;" type="button" class = "btn btn-danger" (click)="delete()" *ngIf="product.id" [hidden]="canWrite == false">Delete</button>
+
+  </div>
+</form>
