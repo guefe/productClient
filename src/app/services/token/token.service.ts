@@ -26,18 +26,6 @@ export class TokenService {
           });
     }
 
-  // getToken(): Observable<string> {
-  //   let token = localStorage.getItem("token");
-  //   token = null;
-  //   if ( token ){
-  //     return of(token);
-  //   } else {
-  //     // Ask for user token by default
-  //     this.createToken(false).subscribe(resp => resp.access_token);
-  //
-  //   }
-  // }
-
   createToken(): Observable<TokenResponse> {
     const basicAuth = btoa(`${config.client_id}:${config.client_secret}`)
     let body ;

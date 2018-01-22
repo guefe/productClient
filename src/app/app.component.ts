@@ -14,8 +14,6 @@ export class AppComponent {
   constructor(private sessionService: SessionService) { }
 
   ngOnInit() {
-    // localStorage.setItem("token", "364db7d3-8745-4f1a-9c66-3b9c4edb5ef7");
-    // this.getToken();
     this.sessionService.adminLogged$
       .subscribe(newValue => {
           this.isAdmin = newValue;
@@ -24,18 +22,13 @@ export class AppComponent {
   }
 
   setLoginAdmin(): void {
-    // this.isAdmin = true;
     this.sessionService.adminLogin();
   }
 
   setLoginUser(): void {
-    // this.isAdmin = false;
     this.sessionService.userLogin();
   }
 
-  // isAdminLogged(): Boolean {
-  //   return this.sessionService.isAdminLogged();
-  // }
 
 
 }
